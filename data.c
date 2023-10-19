@@ -1,7 +1,5 @@
 #include "monty.h"
 
-info_t info;
-
 /**
  * _isdigit - Check if a character is a
  * digit from 0 to 9
@@ -75,6 +73,7 @@ int excute_monty(stack_t **stack)
 		{NULL, NULL}
 	};
 	int i = 0;
+	info_t info;
 
 	while ((command + i)->opcode)
 	{

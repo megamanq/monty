@@ -78,6 +78,7 @@ int treat_monty(char *filename)
 	ssize_t n_r = 1;
 	size_t len = 0;
 	stack_t *stack = NULL;
+	info_t info;
 
 	info.fn = filename;
 	info.fp = fopen(info.fn, "r");
