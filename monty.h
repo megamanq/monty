@@ -14,6 +14,25 @@
 #define LIFO 1
 #define FIFO 0
 
+/**
+ * struct stack_s - Definition of a doubly linked list
+ * node representing a stack (or queue)
+ * @n: An integer value stored in the node
+ * @prev: A pointer to the previous element in the stack (or queue)
+ * @next: A pointer to the next element in the stack (or queue)
+ *
+ * Description: This structure defines a node in a doubly linked list,
+ * designed for use in stack, queue, LIFO, and FIFO data structures
+ * in the Holberton project.
+ */
+
+typedef struct stack_s
+{
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
+} stack_t;
+
 void add_error(void);
 void pop_error(void);
 void handle_error(int code);
@@ -44,7 +63,7 @@ void _queue(stack_t **stack, unsigned int line_number);
 void push_monty(stack_t **stack, unsigned int line_number);
 void swap_monty(stack_t **stack, unsigned int line_number);
 void rotl_monty(stack_t **stack, unsigned int line_number);
-void _stack(stack_t **stack, unsigned uint line_number);
+void _stack(stack_t **stack, unsigned int line_number);
 void pchar_monty(stack_t **stack, unsigned int line_number);
 void add_monty(stack_t **stack, unsigned int line_number);
 void mod_monty(stack_t **stack, unsigned int line_number);
@@ -64,25 +83,6 @@ void *fill_an_array(void *a, int el, unsigned int len);
 char *_memcpy(char *dest, char *src, unsigned int n);
 void free_info(void);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-
-/**
- * struct stack_s - Definition of a doubly linked list
- * node representing a stack (or queue)
- * @n: An integer value stored in the node
- * @prev: A pointer to the previous element in the stack (or queue)
- * @next: A pointer to the next element in the stack (or queue)
- *
- * Description: This structure defines a node in a doubly linked list,
- * designed for use in stack, queue, LIFO, and FIFO data structures
- * in the Holberton project.
- */
-
-typedef struct stack_s
-{
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
-} stack_t;
 
 /**
  * struct instruction_s - Definition of an instruction
