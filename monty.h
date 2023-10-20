@@ -33,6 +33,70 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+/**
+ * struct instruction_s - Definition of an instruction
+ * for an opcode and its corresponding function
+ * @opcode: The specific opcode identifier
+ * @f: The function associated with the opcode
+ *
+ * Description: This structure defines an instruction
+ * that associates an opcode with its corresponding function.
+ * It is designed for use in stack, queue, LIFO, and FIFO data
+ * structures in the Holberton project.
+ */
+
+typedef struct instruction_s
+{
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
+
+/**
+ * struct info_s - Definition of data extracted
+ * from the Monty file
+ * @cmd: The line extracted from the file
+ * @arg: The argument to execute
+ * @l_number: The line number in the file
+ * @fp: The file descriptor
+ * @fn: The file name
+ * @type: The type, either FIFO or LIFO
+ *
+ * Description: This structure contains information about
+ * the commands found in the Monty file, including the
+ * extracted command line, argument, line number, file
+ * descriptor, file name, and the type of data structure
+ * (either FIFO or LIFO).
+ */
+
+typedef struct info_s
+{
+	char *cmd;
+	char **arg;
+	char *fn;
+	int l_number;
+	FILE *fp;
+	int type;
+} info_t;
+extern info_t info;
+
+/**
+ * struct error - Error handling structure for
+ * printing errors to stderr
+ * @out: Error code
+ * @error_type: Function to handle the error
+ *
+ * Description: This structure is used for error handling.
+ * It contains an error code and a function to handle the
+ * error and print it to the standard error
+ * (stderr) stream.
+ */
+
+typedef struct error
+{
+	int out;
+	void (*error_type)(void);
+} error_t;
+
 void add_error(void);
 void pop_error(void);
 void handle_error(int code);
@@ -83,70 +147,5 @@ void *fill_an_array(void *a, int el, unsigned int len);
 char *_memcpy(char *dest, char *src, unsigned int n);
 void free_info(void);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-
-/**
- * struct instruction_s - Definition of an instruction
- * for an opcode and its corresponding function
- * @opcode: The specific opcode identifier
- * @f: The function associated with the opcode
- *
- * Description: This structure defines an instruction
- * that associates an opcode with its corresponding function.
- * It is designed for use in stack, queue, LIFO, and FIFO data
- * structures in the Holberton project.
- */
-
-typedef struct instruction_s
-{
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t;
-
-
-/**
- * struct info_s - Definition of data extracted
- * from the Monty file
- * @cmd: The line extracted from the file
- * @arg: The argument to execute
- * @l_number: The line number in the file
- * @fp: The file descriptor
- * @fn: The file name
- * @type: The type, either FIFO or LIFO
- *
- * Description: This structure contains information about
- * the commands found in the Monty file, including the
- * extracted command line, argument, line number, file
- * descriptor, file name, and the type of data structure
- * (either FIFO or LIFO).
- */
-
-typedef struct info_s
-{
-	char *cmd;
-	char **arg;
-	char *fn;
-	int l_number;
-	FILE *fp;
-	int type;
-} info_t;
-extern info_t info;
-
-/**
- * struct error - Error handling structure for
- * printing errors to stderr
- * @out: Error code
- * @error_type: Function to handle the error
- *
- * Description: This structure is used for error handling.
- * It contains an error code and a function to handle the
- * error and print it to the standard error
- * (stderr) stream.
- */
-
-typedef struct error
-{
-	int out;
-	void (*error_type)(void);
-} error_t;
 
 #endif

@@ -1,5 +1,5 @@
 #include "monty.h"
-
+info_t info;
 /**
  * split- Divide the input line into commands and arguments
  * Return: 0 if the splitting is successful, 1 on failure
@@ -9,7 +9,6 @@ int split(void)
 {
 	char *token;
 	size_t bufsize = 20, i = 0;
-	info_t info;
 
 	info.arg = malloc(bufsize * sizeof(char *));
 	if (info.arg == NULL)
