@@ -148,4 +148,6 @@ char *_memcpy(char *dest, char *src, unsigned int n);
 void free_info(void);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+
 #endif
